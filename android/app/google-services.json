@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "858651236290",
+    "project_id": "letschat-1b67b",
+    "storage_bucket": "letschat-1b67b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:858651236290:android:69aa57d51a84a02c9b685b",
+        "android_client_info": {
+          "package_name": "com.example.flutter_lets_chat"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBjwUoJLhS3BFsEGUVHCKXe1ez2RgssqaM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:858651236290:android:ceecefe6379e0e019b685b",
+        "android_client_info": {
+          "package_name": "com.whitefield.lets_chat"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBjwUoJLhS3BFsEGUVHCKXe1ez2RgssqaM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

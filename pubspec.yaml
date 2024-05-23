@@ -1,0 +1,39 @@
+name: flutter_lets_chat
+description: "A new Flutter project."
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: '>=3.3.4 <4.0.0'
+
+dependencies:
+  animated_text_kit: ^4.2.2
+  cloud_firestore: ^4.17.4
+  firebase_analytics: ^10.10.6
+  firebase_auth: ^4.19.6
+  firebase_core: ^2.31.1
+  firebase_messaging: ^14.9.3
+  firebase_storage: ^11.7.6
+  flutter:
+    sdk: flutter
+  flutter_local_notifications: ^17.1.2 
+  image_picker: ^1.1.1
+  push: ^2.3.0
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
+
+  fonts:
+    - family: Horizon
+      fonts:
+        - asset: assets/Horizon.otf
+
+  assets:
+    - assets/logo.png
+
