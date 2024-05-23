@@ -41,8 +41,8 @@ class _UserImagePickerState extends State<UserImagePicker> {
         ),
         TextButton.icon(
           onPressed: _imagePicker,
-          icon: Icon(Icons.image),
-          label: Text('Add Image'),
+          icon: const Icon(Icons.image),
+          label: const Text('Add Image'),
         )
       ],
     );

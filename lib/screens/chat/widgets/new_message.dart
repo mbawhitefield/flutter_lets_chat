@@ -13,12 +13,24 @@ class NewMessage extends StatefulWidget {
 }
 
 class _NewMessageState extends State<NewMessage> {
-  final TextEditingController _title = TextEditingController();
-  final TextEditingController _desc = TextEditingController();
+  final _auth = FirebaseAuth.instance;
+  User? loggedInUser;
+
+  void getCurrentUser() {
+    try {
+      final user = _auth.currentUser;
+      if (user != null) {
+        loggedInUser = user;
+      }
+    } catch (e) {
+      debugPrint(e.toString());
+    }
+  }
 
   @override
   void initState() {
     super.initState();
+    getCurrentUser;
     const AndroidInitializationSettings androidInitializationSettings =
         AndroidInitializationSettings('logo');
 
@@ -38,11 +50,8 @@ class _NewMessageState extends State<NewMessage> {
     );
   }
 
-  void _showNotification(QueryDocumentSnapshot<Map<String, dynamic>> event) {
-    if (_title.text.isEmpty || _desc.text.isEmpty) {
-      return;
-    }
-
+  void _showNotification(
+      QueryDocumentSnapshot<Map<String, dynamic>> event) async {
     const AndroidNotificationDetails androidNotificationDetails =
         AndroidNotificationDetails("ScheduleNotification001", "Notify Me",
             importance: Importance.high,
@@ -64,7 +73,7 @@ class _NewMessageState extends State<NewMessage> {
 
     flutterLocalNotificationsPlugin.show(
         01, event.get('username'), event.get('text'), notificationDetails,
-        payload: 'Ths s the data');
+        payload: 'This is the data');
   }
 
   DateTime dateTime = DateTime.now();
@@ -101,14 +110,9 @@ class _NewMessageState extends State<NewMessage> {
       if (event.docs.isEmpty) {
         return;
       }
+     
       _showNotification(event.docs.first);
     });
-  }
-
-  @override
-  void dispose() {
-    messageController.dispose();
-    super.dispose();
   }
 
   @override

@@ -20,7 +20,6 @@ class SignUpScreen extends StatefulWidget {
 
 class _SignUpScreenState extends State<SignUpScreen> {
   void _submit() async {
-    
     try {
       final isValid = formKey.currentState!.validate();
       if (!isValid && profileImage == null) {}
@@ -34,7 +33,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
           .ref()
           .child('profile_images')
           .child('${userCredentials.user!.uid}.jpg');
-          
+
       await storageRef.putFile(profileImage!);
       final imageUrl = await storageRef.getDownloadURL();
 
@@ -82,6 +81,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.purple[50],
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Form(

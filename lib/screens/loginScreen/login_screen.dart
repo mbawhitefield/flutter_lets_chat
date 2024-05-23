@@ -22,9 +22,8 @@ class _LoginScreenState extends State<LoginScreen> {
       setState(() {
         isLoading = true;
       });
-      final userCredentials = await _auth.signInWithEmailAndPassword(
-          email: email, password: password);
-      print(userCredentials);
+      await _auth.signInWithEmailAndPassword(email: email, password: password);
+
       Navigator.pushNamed(context, ChatScreen.routeName);
       emailController.clear();
       passwordController.clear();
@@ -58,6 +57,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.purple[50],
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Form(

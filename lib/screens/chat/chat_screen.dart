@@ -17,8 +17,7 @@ class _ChatScreenState extends State<ChatScreen> {
   void pushNotifications() async {
     final fcm = FirebaseMessaging.instance;
     await fcm.requestPermission();
-    final token = await fcm.getToken();
-    print(token);
+    await fcm.getToken();
 
     fcm.subscribeToTopic('chat');
   }
@@ -33,17 +32,19 @@ class _ChatScreenState extends State<ChatScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Chat Screen'),
+        automaticallyImplyLeading: false,
+        title: const Text('Chat Screen'),
+        foregroundColor: Colors.white,
         actions: [
           IconButton(
               onPressed: () {
                 FirebaseAuth.instance.signOut();
                 Navigator.pop(context);
               },
-              icon: Icon(Icons.logout))
+              icon: const Icon(Icons.logout))
         ],
       ),
-      body: Column(
+      body: const Column(
         children: [
           Expanded(child: ChatMessages()),
           NewMessage(),
