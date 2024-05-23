@@ -3,7 +3,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
-final user = FirebaseAuth.instance.currentUser!;
+final _auth = FirebaseAuth.instance;
+
+final user = _auth.currentUser!;
 
 class NewMessage extends StatefulWidget {
   const NewMessage({super.key});
@@ -13,24 +15,10 @@ class NewMessage extends StatefulWidget {
 }
 
 class _NewMessageState extends State<NewMessage> {
-  final _auth = FirebaseAuth.instance;
-  User? loggedInUser;
-
-  void getCurrentUser() {
-    try {
-      final user = _auth.currentUser;
-      if (user != null) {
-        loggedInUser = user;
-      }
-    } catch (e) {
-      debugPrint(e.toString());
-    }
-  }
-
   @override
   void initState() {
     super.initState();
-    getCurrentUser;
+
     const AndroidInitializationSettings androidInitializationSettings =
         AndroidInitializationSettings('logo');
 
@@ -110,7 +98,7 @@ class _NewMessageState extends State<NewMessage> {
       if (event.docs.isEmpty) {
         return;
       }
-     
+
       _showNotification(event.docs.first);
     });
   }
@@ -135,11 +123,12 @@ class _NewMessageState extends State<NewMessage> {
             ),
           ),
           IconButton(
-              onPressed: _submitMessage,
-              icon: Icon(
-                Icons.send,
-                color: Colors.deepPurple,
-              ))
+            onPressed: _submitMessage,
+            icon: const Icon(
+              Icons.send,
+              color: Colors.deepPurple,
+            ),
+          ),
         ],
       ),
     );
